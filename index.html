@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Midnight Billiards — Premium Pool</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Rajdhani:wght@300;400;600;700&family=Cinzel:wght@400;600;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<!-- ═══ LANDING SCREEN ═══ -->
+<div id="landingScreen" class="screen active">
+  <div class="land-bg"></div>
+  <div class="land-parts" id="landParts"></div>
+  <div class="land-content">
+    <div class="hero-ball">8</div>
+    <div>
+      <h1 class="land-title">Midnight Billiards</h1>
+      <p class="land-tag">Premium Pool &amp; Snooker</p>
+    </div>
+    <div class="land-feats">
+      <div class="lf"><span class="lfi">🎱</span>9 Modes</div>
+      <div class="lf"><span class="lfi">🤖</span>AI Rival</div>
+      <div class="lf"><span class="lfi">🏆</span>Achievements</div>
+      <div class="lf"><span class="lfi">🏪</span>Shop</div>
+      <div class="lf"><span class="lfi">📋</span>Challenges</div>
+    </div>
+    <div class="land-pills">
+      <span class="lpill">8-Ball</span><span class="lpill">9-Ball</span><span class="lpill">10-Ball</span>
+      <span class="lpill">Snooker</span><span class="lpill">Straight Pool</span><span class="lpill">One Pocket</span>
+      <span class="lpill">Bank Pool</span><span class="lpill">Blackball</span><span class="lpill">7-Ball</span>
+    </div>
+    <div class="land-btns">
+      <button class="lbtn lbtn-gold" id="landSignIn">Sign In</button>
+      <button class="lbtn lbtn-outline" id="landSignUp">Create Account</button>
+      <div class="ldiv"><span>or</span></div>
+      <button class="lbtn lbtn-ghost" id="landGuest">Play as Guest</button>
+    </div>
+    <div class="land-foot">Free to play · No ads · Local saves</div>
+  </div>
+</div>
+
+<!-- ═══ AUTH SCREEN ═══ -->
+<div id="authScreen" class="screen">
+  <div class="auth-bg"></div>
+  <button class="auth-back" id="authBack">← Back</button>
+  <div class="auth-card">
+    <div class="auth-hdr">
+      <div class="auth-ball">8</div>
+      <div class="auth-title">Midnight Billiards</div>
+      <div class="auth-sub" id="authSub">Welcome back</div>
+    </div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="in" id="atIn">Sign In</button>
+      <button class="auth-tab" data-tab="up" id="atUp">Sign Up</button>
+    </div>
+    <!-- SIGN IN -->
+    <div class="auth-form" id="afIn">
+      <div><label class="auth-lbl">Username</label><input class="auth-inp" id="siUser" type="text" placeholder="Your username" autocomplete="username"/></div>
+      <div><label class="auth-lbl">Password</label><input class="auth-inp" id="siPass" type="password" placeholder="Your password" autocomplete="current-password"/></div>
+      <label class="auth-rem"><input type="checkbox" id="siRem" checked/><span>Remember me</span></label>
+      <div class="auth-err" id="siErr"></div>
+      <button class="auth-btn" id="doSignIn">Sign In</button>
+      <div class="auth-adiv"><span>or</span></div>
+      <button class="auth-guest" id="siGuest">Continue as Guest</button>
+    </div>
+    <!-- SIGN UP -->
+    <div class="auth-form" id="afUp" style="display:none">
+      <div><label class="auth-lbl">Display Name</label><input class="auth-inp" id="suUser" type="text" placeholder="Pick a name (2-20 chars)" maxlength="20" autocomplete="username"/></div>
+      <div><label class="auth-lbl">Email (optional)</label><input class="auth-inp" id="suEmail" type="email" placeholder="your@email.com" autocomplete="email"/></div>
+      <div><label class="auth-lbl">Password</label><input class="auth-inp" id="suPass" type="password" placeholder="Min 6 characters" autocomplete="new-password"/></div>
+      <div class="pwd-strength-wrap">
+        <div class="pwd-bar-track">
+          <div class="pwd-bar-seg" id="pwSeg1"></div>
+          <div class="pwd-bar-seg" id="pwSeg2"></div>
+          <div class="pwd-bar-seg" id="pwSeg3"></div>
+          <div class="pwd-bar-seg" id="pwSeg4"></div>
+        </div>
+        <div class="pwd-strength-row">
+          <span class="pwd-strength-label" id="pwStrengthLabel">Enter a password</span>
+          <button type="button" class="pwd-suggest-link" id="suSuggestBtn">🔑 Suggest strong password</button>
+        </div>
+      </div>
+      <div class="pwd-suggest-box" id="pwSuggestBox">
+        <div class="pwd-suggest-hdr"><span>🛡️</span><span>Suggested strong password</span></div>
+        <div class="pwd-suggest-pass" id="pwSuggestText">—</div>
+        <div class="pwd-suggest-actions">
+          <button type="button" class="pwd-suggest-use" id="pwUseSuggest">Use this password</button>
+          <button type="button" class="pwd-suggest-refresh" id="pwRefreshSuggest" title="Generate another">↻</button>
+        </div>
+      </div>
+      <div class="auth-err" id="suErr"></div>
+      <button class="auth-btn" id="doSignUp">Create Account</button>
+      <div class="auth-adiv"><span>or</span></div>
+      <button class="auth-guest" id="suGuest">Continue as Guest</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ START SCREEN ═══ -->
+<div id="startScreen" class="screen">
+  <div class="start-bg"></div>
+  <div class="start-content">
+    <div class="logo-wrap">
+      <div class="ball-8-logo">8</div>
+      <h1 class="game-title">Midnight Billiards</h1>
+      <p class="game-subtitle">Premium Pool &amp; Snooker</p>
+    </div>
+
+    <!-- Account Row -->
+    <div class="acct-row">
+      <div class="acct-ind clickable" id="acctRowBtn"><div class="acct-dot guest" id="acctDot"></div><span id="acctTxt">Guest</span></div>
+      <button class="sign-out-btn" id="signOutBtn" style="display:none">Sign Out</button>
+    </div>
+    <!-- Profile Bar -->
+    <div class="profile-bar" id="profileBarBtn">
+      <div class="profile-avatar" id="startAvatar">🎱</div>
+      <div class="profile-info">
+        <div class="profile-name" id="startUsername">Pool Rookie</div>
+        <div class="profile-title-badge" id="startTitle">Rookie</div>
+        <div class="profile-stats-row">
+          <div class="pstat">W: <span id="startWins">0</span></div>
+          <div class="pstat">L: <span id="startLosses">0</span></div>
+          <div class="pstat">Streak: <span id="startStreak">0</span></div>
+        </div>
+      </div>
+      <div class="profile-right">
+        <div class="coin-badge">🪙 <span id="startCoins">500</span></div>
+        <div class="xp-mini">LV <span id="startLevel">1</span> · XP <span id="startXP">0</span></div>
+        <div class="xp-mini-bar"><div class="xp-mini-fill" id="startXPBar" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <!-- Nav Row -->
+    <div class="nav-row">
+      <button class="nav-btn" id="navShop"><span class="nb-icon">🏪</span>Shop</button>
+      <button class="nav-btn" id="navAch"><span class="nb-icon">🏆</span>Achievements</button>
+      <button class="nav-btn" id="navChallenges"><span class="nb-icon">📋</span>Challenges</button>
+      <button class="nav-btn" id="navDaily"><span class="nb-icon">🎁</span>Daily</button>
+    </div>
+
+    <!-- Mode Selector -->
+    <div class="mode-selector">
+      <div class="mode-label">Select Game Mode</div>
+      <div class="mode-grid" id="modeGrid">
+        <button class="mode-btn active" data-mode="eightball"><span class="mode-icon">8</span><span class="mode-name">8-Ball</span></button>
+        <button class="mode-btn" data-mode="nineball"><span class="mode-icon">9</span><span class="mode-name">9-Ball</span></button>
+        <button class="mode-btn" data-mode="tenball"><span class="mode-icon">10</span><span class="mode-name">10-Ball</span></button>
+        <button class="mode-btn" data-mode="sevenball"><span class="mode-icon">7</span><span class="mode-name">7-Ball</span></button>
+        <button class="mode-btn" data-mode="blackball"><span class="mode-icon">●</span><span class="mode-name">Blackball</span></button>
+        <button class="mode-btn" data-mode="straightpool"><span class="mode-icon">15</span><span class="mode-name">Straight Pool</span></button>
+        <button class="mode-btn" data-mode="onepocket"><span class="mode-icon">◎</span><span class="mode-name">One Pocket</span></button>
+        <button class="mode-btn" data-mode="bankpool"><span class="mode-icon">↗</span><span class="mode-name">Bank Pool</span></button>
+        <button class="mode-btn" data-mode="snooker"><span class="mode-icon">S</span><span class="mode-name">Snooker</span></button>
+      </div>
+    </div>
+
+    <div class="ai-settings">
+      <label for="aiDifficulty">AI Difficulty</label>
+      <div class="ai-select-wrap">
+        <select id="aiDifficulty">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <span class="select-arrow">▾</span>
+      </div>
+    </div>
+
+    <!-- Equipped Cue -->
+    <div class="equipped-row">
+      <div class="equipped-label">Equipped</div>
+      <div class="equipped-cue-name" id="equippedCueName">Oak Classic</div>
+      <div class="equipped-rarity rarity-common" id="equippedCueRarity">Common</div>
+    </div>
+
+    <div class="menu-buttons">
+      <button class="btn-primary" id="btn2Player">⚔ Two Players</button>
+      <button class="btn-primary" id="btnVsAI">🤖 vs AI</button>
+      <button class="btn-primary ghost" id="btnRules">📖 Rules &amp; Guide</button>
+    </div>
+
+    <div class="start-bottom-row">
+      <button class="btn-sound" id="soundToggle">🔊 Sound ON</button>
+      <div class="start-footer">Click &amp; drag to aim &nbsp;•&nbsp; Hold for power &nbsp;•&nbsp; Release to shoot</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ GAME SCREEN ═══ -->
+<div id="gameScreen" class="screen">
+  <div id="hud">
+    <div class="player-panel" id="p1Panel">
+      <div class="player-name">Player 1</div>
+      <div class="ball-type-label" id="p1Type">—</div>
+      <div class="ball-rack" id="p1Balls"></div>
+    </div>
+    <div class="center-hud">
+      <div class="mode-badge" id="modeBadge">8-Ball</div>
+      <div class="turn-indicator" id="turnIndicator">Player 1's Turn</div>
+      <div class="score-display" id="scoreDisplay"></div>
+      <div class="foul-msg" id="foulMsg"></div>
+    </div>
+    <div class="player-panel right" id="p2Panel">
+      <div class="player-name" id="p2Name">Player 2</div>
+      <div class="ball-type-label" id="p2Type">—</div>
+      <div class="ball-rack right" id="p2BallsRight"></div>
+    </div>
+  </div>
+
+  <div id="tableWrap">
+    <canvas id="poolCanvas"></canvas>
+    <div id="cueOverlay"></div>
+  </div>
+
+  <div id="powerMeterWrap">
+    <div class="power-label">POWER</div>
+    <div id="powerBar"><div id="powerFill"></div></div>
+  </div>
+
+  <div id="tipPanel">
+    <div class="tip-icon">💡</div>
+    <div class="tip-text" id="tipText">Take your time — aim before shooting.</div>
+  </div>
+
+  <div id="bottomBar">
+    <button class="btn-sm" id="btnMenu">Menu</button>
+    <div class="status-msg" id="statusMsg">Aim and shoot!</div>
+    <button class="btn-sm btn-acct-game" id="btnAcctGame" style="display:none">Sign In</button>
+    <button class="btn-sm" id="btnRulesGame">Rules</button>
+    <button class="btn-sm" id="btnSoundGame">🔊</button>
+  </div>
+</div>
+
+<!-- ═══ GAME OVER SCREEN ═══ -->
+<div id="gameOverScreen" class="screen">
+  <div class="gameover-card">
+    <div class="trophy">🏆</div>
+    <h2 class="winner-text" id="winnerText">Player 1 Wins!</h2>
+    <p class="gameover-sub" id="gameOverSub">Pocketed the 8-ball correctly.</p>
+    <div class="gameover-score" id="gameOverScore"></div>
+    <div class="reward-row" id="rewardRow"></div>
+    <div class="xp-bar-wrap" id="xpBarWrap" style="display:none">
+      <div class="xp-bar-fill" id="xpBarFill" style="width:0%"></div>
+    </div>
+    <div class="xp-bar-label" id="xpBarLabel"></div>
+    <div class="gameover-buttons">
+      <button class="btn-primary" id="btnPlayAgain">Play Again</button>
+      <button class="btn-primary ghost" id="btnMainMenu">Main Menu</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ RULES MODAL ═══ -->
+<div id="rulesModal" class="modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" id="rulesClose">✕</button>
+    <div class="modal-header">
+      <div class="modal-title-icon" id="modalTitleIcon">8</div>
+      <div>
+        <h2 class="modal-title" id="modalTitle">8-Ball Pool</h2>
+        <p class="modal-sub" id="modalSub">Standard Rules</p>
+      </div>
+    </div>
+    <div class="modal-tabs">
+      <button class="tab-btn active" data-tab="rules">Rules</button>
+      <button class="tab-btn" data-tab="tips">Tips &amp; Strategy</button>
+      <button class="tab-btn" data-tab="fouls">Fouls</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ═══ PROFILE MODAL ═══ -->
+<div id="profileModal" class="modal-overlay">
+  <div class="modal-card">
+    <button class="modal-close" id="profileClose">✕</button>
+    <div class="profile-hero">
+      <div class="profile-avatar-big" id="profileAvatar">🎱</div>
+      <div class="profile-main-info">
+        <div class="profile-uname" id="profileUsername">Pool Rookie</div>
+        <div class="profile-utitle" id="profileTitleDisplay">Rookie</div>
+        <div class="level-row">
+          <div class="level-badge" id="profileLevel">Lv 1</div>
+          <div class="xp-bar-full"><div class="xp-bar-full-fill" id="profileXPBar" style="width:0%"></div></div>
+          <div class="xp-label" id="profileXPLabel">0 / 100 XP</div>
+        </div>
+      </div>
+    </div>
+    <div class="stat-grid" id="profileStatGrid"></div>
+    <div class="equipped-section">
+      <div class="section-heading">Equipped Cue</div>
+      <div class="equipped-card">
+        <div class="equipped-icon">🎱</div>
+        <div class="equipped-details">
+          <div class="equipped-name" id="profileCueName">Oak Classic</div>
+          <div class="equipped-type rarity-common" id="profileCueRarity">Common Cue</div>
+        </div>
+      </div>
+    </div>
+    <div class="equipped-section">
+      <div class="section-heading">Statistics</div>
+      <div class="stat-grid" id="profileStatGrid2"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SHOP MODAL ═══ -->
+<div id="shopModal" class="modal-overlay">
+  <div class="modal-card">
+    <button class="modal-close" id="shopClose">✕</button>
+    <div class="modal-header" style="padding-bottom:10px">
+      <div class="modal-title-icon">🏪</div>
+      <div>
+        <h2 class="modal-title">Shop</h2>
+        <p class="modal-sub">Cues &amp; Avatars</p>
+      </div>
+    </div>
+    <div class="shop-balance">
+      <span style="font-size:20px">🪙</span>
+      <div>
+        <div class="shop-balance-val" id="shopCoins">500</div>
+        <div class="shop-balance-lbl">Coins</div>
+      </div>
+    </div>
+    <div class="shop-tabs modal-tabs" id="shopTabs">
+      <button class="tab-btn active" data-shop="cues">Cue Sticks</button>
+      <button class="tab-btn" data-shop="avatars">Avatars</button>
+    </div>
+    <div class="modal-body" style="padding:0">
+      <div class="shop-grid" id="shopGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ACHIEVEMENTS MODAL ═══ -->
+<div id="achModal" class="modal-overlay">
+  <div class="modal-card">
+    <button class="modal-close" id="achClose">✕</button>
+    <div class="modal-header">
+      <div class="modal-title-icon">🏆</div>
+      <div>
+        <h2 class="modal-title">Achievements</h2>
+        <p class="modal-sub" id="achCount">0 / 0 Unlocked</p>
+      </div>
+    </div>
+    <div class="ach-filter-row" id="achFilterRow"></div>
+    <div class="modal-body" style="padding:0">
+      <div class="ach-list" id="achList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CHALLENGES MODAL ═══ -->
+<div id="challengeModal" class="modal-overlay">
+  <div class="modal-card">
+    <button class="modal-close" id="challengeClose">✕</button>
+    <div class="modal-header">
+      <div class="modal-title-icon">📋</div>
+      <div>
+        <h2 class="modal-title">Challenges</h2>
+        <p class="modal-sub">Daily · Weekly · Monthly</p>
+      </div>
+    </div>
+    <div class="modal-body" style="padding:0" id="challengeBody"></div>
+  </div>
+</div>
+
+<!-- ═══ DAILY LOGIN MODAL ═══ -->
+<div id="loginRewardModal" class="modal-overlay">
+  <div class="modal-card">
+    <button class="modal-close" id="dailyClose">✕</button>
+    <div class="daily-header">
+      <div class="daily-title">🎁 Daily Reward</div>
+      <div class="daily-sub">Login Streak Bonus</div>
+    </div>
+    <div class="daily-grid" id="dailyGrid"></div>
+    <button class="daily-claim-btn" id="dailyClaimBtn">Claim Today's Reward</button>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
